@@ -18,16 +18,17 @@ var AUTOPREFIXER_BROWSERS = [
 
 var NODE_ENV = process.env.NODE_ENV;
 var IS_BUILD = (NODE_ENV === 'production' || NODE_ENV === 'test');
+var filename = 'assets/[name].js?' + (IS_BUILD ? '[chunkHash:8]' : '[hash:8]');
 
 module.exports = {
     entry: {
-        vender: ['react', 'react-dom', 'react-router', 'mobx'],
+        vendor: ['react', 'react-dom', 'react-router', 'mobx'],
         app: ['./src/index']
     },
     output: {
         publicPath: '',
-        filename: 'assets/[name].js?[chunkhash:8]',
-        chunkFilename: 'assets/[name].js?[chunkhash:8]',
+        filename: filename,
+        chunkFilename: filename,
         path: path.resolve(__dirname, './dist/')
     },
     module: {
@@ -59,16 +60,16 @@ module.exports = {
             },
             {
                 test: /\.(jpg|png|gif)$/,
-                loader: "url-loader?limit=8192&name=assets/[name].[ext]?[hash:8]"
+                loader: 'url-loader?limit=8192&name=assets/[name].[ext]?[hash:8]'
             }
         ]
     },
     plugins:[
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vender'],
-            filename: 'assets/[name].js?[hash:8]'
+            names: ['vendor', 'manifest'],
+            minChuncks: Infinity
         }),
-        new ExtractTextPlugin("assets/[name].css?[contenthash:8]"),
+        new ExtractTextPlugin("assets/[name].css?[contentHash:8]"),
         new HtmlWebpackPlugin({
             filename: './index.html',
             template: './src/views/index.html',
