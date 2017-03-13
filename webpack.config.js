@@ -81,10 +81,6 @@ module.exports = {
                 postcss: [autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })]
             }
         }),
-        new CopyWebpackPlugin([
-            { from: './src/static', to: './' },
-            { from: './src/json', to: './json' }
-        ]),
         new webpack.DefinePlugin({
             "process.env": {
                 NODE_ENV: JSON.stringify(NODE_ENV)
@@ -96,7 +92,12 @@ module.exports = {
                     warnings: false
                 }
             })
-        ] : []),
+        ] : [
+            new CopyWebpackPlugin([
+                { from: './src/static', to: './' },
+                { from: './src/json', to: './json' }
+            ])
+        ]),
     resolve: {
         extensions: ['*', '.js', '.jsx']
     }
