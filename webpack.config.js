@@ -22,7 +22,7 @@ var filename = 'assets/[name].js?' + (IS_BUILD ? '[chunkHash:8]' : '[hash:8]');
 
 module.exports = {
     entry: {
-        vendor: ['react', 'react-dom', 'react-router', 'mobx'],
+        vendor: ['react', 'react-dom', 'react-router', 'mobx', 'mobx-react'],
         app: ['./src/index']
     },
     output: {
