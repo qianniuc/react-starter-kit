@@ -1,4 +1,4 @@
-import { getJSON } from '../utils/ajax';
+import { getJSON, post } from '../utils/ajax';
 
 export default {
     getUserInfo() {
