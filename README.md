@@ -33,15 +33,15 @@ React-kit
 ├── README.md
 ├─┬ src                         // 源码目录
 │ ├── components                // 展示组件
-│ ├── containers                //容器组件
+│ ├── containers                // 容器组件
 │ ├── images
-│ ├── json                      //模拟数据接口
+│ ├── json                      // 模拟数据接口
 │ ├── mobx
 │ ├── routes
 │ ├── services
-│ ├── static                    //静态资源，如favicon.ico,robots.txt等
+│ ├── static                    // 静态资源，如favicon.ico,robots.txt等
 │ ├── utils
-│ ├── views                     //视图模板 
+│ ├── views                     // 视图模板 
 │ ├── env.js                    // 环境配置
 │ └── index.js                  // 入口文件
 └── webpack.config.js           // webpack配置文件
