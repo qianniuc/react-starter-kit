@@ -7,6 +7,11 @@ React开发脚手架
 2. Mobx
 3. ES6
 
+### 安装项目依赖
+```
+yarn install
+```
+
 ### 项目运行
 ```
 # 运行dev环境
@@ -43,7 +48,8 @@ React-kit
 │ ├── utils
 │ ├── views                     // 视图模板 
 │ ├── env.js                    // 环境配置
-│ └── index.js                  // 入口文件
-└── webpack.config.js           // webpack配置文件
+│ └── index.js 
+├── webpack.config.js           // 入口文件
+└── yarn.lock                   // 依赖锁
    
 ```
