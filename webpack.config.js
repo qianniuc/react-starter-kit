@@ -29,7 +29,7 @@ module.exports = {
         publicPath: '',
         filename: filename,
         chunkFilename: filename,
-        path: path.resolve(__dirname, './dist/')
+        path: path.resolve(__dirname, './dist')
     },
     module: {
         loaders: [
@@ -46,17 +46,17 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({
+                loader: (IS_BUILD ? ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         use: 'css-loader!postcss-loader'
-                    })
+                    }) : 'style-loader!css-loader!postcss-loader')
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({
+                loader: (IS_BUILD ? ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         use: 'css-loader!postcss-loader!sass-loader'
-                    })
+                    }) : 'style-loader!css-loader!postcss-loader!sass-loader')
             },
             {
                 test: /\.(jpg|png|gif)$/,
@@ -64,6 +64,7 @@ module.exports = {
             }
         ]
     },
+    devtool: IS_BUILD ? false : 'cheap-module-eval-source-map',
     plugins:[
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest'],
@@ -86,7 +87,7 @@ module.exports = {
                 NODE_ENV: JSON.stringify(NODE_ENV)
             }
         })
-      ].concat(IS_BUILD ? [
+    ].concat(IS_BUILD ? [
             new webpack.optimize.UglifyJsPlugin({
                 compress: {
                     warnings: false
