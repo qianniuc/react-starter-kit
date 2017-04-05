@@ -1,4 +1,4 @@
-# React-kit
+# React starter kit
 React开发脚手架
 
 ### 技术栈
