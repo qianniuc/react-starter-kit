@@ -63,6 +63,14 @@ module.exports = {
             {
                 test: /\.(jpg|png|gif)$/,
                 loader: 'url-loader?limit=8192&name=assets/[name].[ext]?[hash:8]'
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'assets/[name].[ext]?[hash:8]',
+                    publicPath: '../',
+                },
             }
         ]
     },
